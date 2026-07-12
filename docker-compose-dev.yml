@@ -1,0 +1,14 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+    # Remove --continuous. Use standard bootRun.
+    command: ./gradlew bootRun
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      
