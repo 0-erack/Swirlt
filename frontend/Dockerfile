@@ -10,7 +10,8 @@ RUN pnpm install --no-frozen-lockfile
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN pnpm run test
+RUN pnpm build --configuration=production
 
 FROM nginx:alpine AS runner
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf

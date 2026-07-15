@@ -5,7 +5,7 @@ cd frontend
 #pnpm install
 cd ..
 cd backend
-./gradlew build
+#./gradlew build
 cd ..
 docker compose -p swirlt-prod -f docker-compose.yml up
 echo ya
