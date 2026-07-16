@@ -1,7 +1,8 @@
-package com.example.swirlt;
+package com.rackdev.swirlt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class SwirltApplication {
@@ -9,9 +10,10 @@ public class SwirltApplication {
 	public static void hola(){}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwirltApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SwirltApplication.class, args);
 		System.out.println("hola");
 		hola();
 	}
 
 }
+ 
