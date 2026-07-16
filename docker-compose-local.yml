@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - red
+  redis:
+    image: redis:6.2
+    ports:
+      - "8522:6379"
+    networks:
+      - red
+
+networks:
+  red:
+  esnet:
+    driver: bridge

@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    networks:
+      - red
   backend:
     container_name: swirlt-backend
     build:
@@ -25,9 +27,21 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
+    networks:
+      - red
   db:
     image: postgres:16-alpine
     env_file:
       - .env
     volumes:
       - ./database:/var/lib/postgresql/data
+    networks:
+      - red
+  redis:
+    image: redis:6.2
+    networks:
+      - red
+networks:
+  red:
+  esnet:
+    driver: bridge
